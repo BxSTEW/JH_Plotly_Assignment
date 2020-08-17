@@ -1,0 +1,27 @@
+---
+title: "Plotly 8/17/2020"
+author: "Brian Stewart"
+date: "8/17/2020"
+output: html_document
+---
+
+```{r}
+library(plotly)
+library(wesanderson)
+```
+
+```{r}
+data('mtcars')
+```
+
+```{r}
+fig <- plot_ly(mtcars, x = ~hp, y = ~mpg, mode = 'markers', color = as.factor(mtcars$cyl), type = 'scatter')
+fig <- fig %>% layout(
+        title = "Horsepower's affect on Miles Per Gallon by Cylinder Type",
+        xaxis = list(title = 'Horsepower'),
+        yaxis = list(title = 'Miles Per Gallon'),
+        legend = list(title = list(text='<b> Cylinder </b>'))
+)
+
+fig
+```
